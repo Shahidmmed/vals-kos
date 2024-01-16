@@ -54,7 +54,7 @@ const Card = () => {
             <br /> you that I'll always
             <br /> pick you first
           </div>
-          <div className="heart" onClick={() => navigator("/open")}></div>
+          <div className="heart"></div>
         </div>
         <div className="hearts">
           <div className="one"></div>
