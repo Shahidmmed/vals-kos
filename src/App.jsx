@@ -8,7 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/vals-kos/" element={<Card />} />
-          <Route path="/open" element={<OpeningCard />} />
+          <Route path="/vals-kos/open" element={<OpeningCard />} />
         </Routes>
       </BrowserRouter>
     </>

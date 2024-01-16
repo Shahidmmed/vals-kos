@@ -244,6 +244,12 @@
   height: 0;
 }
 
+.loading-container {
+  position: relative;
+  top: 100px;
+  left: 20px;
+}
+
 .shadow {
   position: absolute;
   width: 330px;

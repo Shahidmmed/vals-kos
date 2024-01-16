@@ -1,46 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
 
 const Card = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
   const navigator = useNavigate();
+  const containerRef = useRef(null);
   let hoverTimeout;
 
   useEffect(() => {
-    const container = document.querySelector(".container");
+    const container = containerRef.current;
     const card = document.querySelector(".card");
 
     const handleMouseEnter = () => {
       setIsHovered(true);
+      setShowLoading(true);
       card.style.top = "-90px";
 
-      // Set timeout for 10 seconds
+      // Set timeout for 3 seconds (3000 milliseconds)
       hoverTimeout = setTimeout(() => {
-        navigator("/open");
-      }, 3000);
+        navigator("/vals-kos/open");
+      }, 4000);
     };
 
     const handleMouseLeave = () => {
       setIsHovered(false);
+      setShowLoading(false);
       card.style.top = "0";
       // Clear the timeout when mouse leaves
       clearTimeout(hoverTimeout);
     };
 
-    container.addEventListener("mouseenter", handleMouseEnter);
-    container.addEventListener("mouseleave", handleMouseLeave);
+    if (container) {
+      container.addEventListener("mouseenter", handleMouseEnter);
+      container.addEventListener("mouseleave", handleMouseLeave);
+    }
 
     return () => {
-      container.removeEventListener("mouseenter", handleMouseEnter);
-      container.removeEventListener("mouseleave", handleMouseLeave);
+      if (container) {
+        container.removeEventListener("mouseenter", handleMouseEnter);
+        container.removeEventListener("mouseleave", handleMouseLeave);
+      }
       // Clear the timeout when component unmounts
       clearTimeout(hoverTimeout);
     };
-  }, []);
+  }, [navigator]);
 
   return (
-    <div className={`container ${isHovered ? "hovered" : ""}`}>
+    <div
+      ref={containerRef}
+      className={`container ${isHovered ? "hovered" : ""}`}
+    >
       <div className="valentines">
         <div className="envelope"></div>
         <div className="front"></div>
@@ -65,6 +76,12 @@ const Card = () => {
         </div>
       </div>
       <div className="shadow"></div>
+
+      {showLoading && (
+        <div className="loading-container">
+          <div className="loading-message">There's more, please wait...</div>
+        </div>
+      )}
     </div>
   );
 };
