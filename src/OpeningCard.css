@@ -180,7 +180,7 @@ input#open {
 }
 
 .big-heart {
-  position: relative;
+  position: absolute;
   background-color: #d04e4e;
   height: 60px;
   width: 60px;
