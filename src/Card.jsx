@@ -57,13 +57,12 @@ const Card = () => {
         <div className="front"></div>
         <div className="card">
           <div className="from-to">
-            <span>To: Elsie</span>
-            <span className="from">From: Kwaku</span>
+            <span>To: </span>
+            <span className="from">From: </span>
           </div>
           <div className="text">
-            This is just to remind
-            <br /> you that I'll always
-            <br /> pick you first
+            <br /> I'm falling for
+            <br /> you
           </div>
           <div className="heart"></div>
         </div>

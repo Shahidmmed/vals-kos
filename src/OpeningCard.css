@@ -149,7 +149,7 @@ input#open {
 }
 
 .text-one:after {
-  content: "if you like , say no and see😡👍🏾";
+  content: "";
   top: 70px;
   font-size: x-small;
 }
